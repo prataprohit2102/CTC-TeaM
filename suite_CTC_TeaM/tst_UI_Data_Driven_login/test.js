@@ -7,7 +7,8 @@ function main() {
     var pass;
 
     test.log("Opening the site");
-    startBrowser("https://autothon-nagarro-frontend-x01.azurewebsites.net/");
+    startBrowser("https://autothon-nagarro-frontend-e00.azurewebsites.net/");
+    clickButton(waitForObject(names.reactAppButton));
     for (var record in dataset) {
         if (testData.field(dataset[record], "user") == "admin") {
             user = testData.field(dataset[record], "user");
@@ -15,15 +16,18 @@ function main() {
         }
 
     }
-    clickLink(waitForObject(names.reactAppLoginA));
-    setFocus(waitForObject(names.reactAppPasswordText));
+    test.log("click on login");
+    clickLink(waitForObject(names.reactAppLoginA_2));
+    setFocus(waitForObject(names.reactAppUsernameText));
     test.log("Enter the user name");
-    typeText(waitForObject(names.reactAppPasswordText), "admin");
-    setFocus(waitForObject(names.reactAppUsernamePassword));
+    typeText(waitForObject(names.reactAppUsernameText), user);
+    setFocus(waitForObject(names.reactAppPasswordPassword));
     test.log("entering the pass");
-    typeText(waitForObject(names.reactAppUsernamePassword), "password");
+    typeText(waitForObject(names.reactAppPasswordPassword), pass);
     test.log("click Login button");
     clickButton(waitForObject(names.reactAppLoginButton));
     test.vp("VP1");
+    
+    
     test.log("You are loggedin");
 }

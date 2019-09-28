@@ -1,9 +1,5 @@
 import * as names from 'names.js';
-
-
-function main(){
-    
-    var dataset = testData.dataset("login.tsv");
+function addmovie(){
     var movietable = testData.dataset("movie.tsv");
     var user;
     var pass;
@@ -13,17 +9,6 @@ function main(){
     var category;
     var url;
     var rating;
-    test.log("Opening the site");
-    startBrowser("https://autothon-nagarro-frontend-e00.azurewebsites.net/");
-    clickButton(waitForObject(names.reactAppButton));
-    test.log("Getting user and password from data table for admin")
-    for (var record in dataset) {
-        if(testData.field(dataset[record], "user")=="admin"){
-         user = testData.field(dataset[record], "user");
-         pass = testData.field(dataset[record], "pass");
-        }
-  
-    }
     test.log("Getting data for movie")
     for (var record in movietable) {
         title = testData.field(movietable[record], "title");
@@ -33,17 +18,6 @@ function main(){
         url = testData.field(movietable[record], "url");
         rating = testData.field(movietable[record], "rating");
     }
-    //names.reactAppPasswordPassword
-    test.log("click on login");
-    clickLink(waitForObject(names.reactAppLoginA_2));
-    setFocus(waitForObject(names.reactAppUsernameText));
-    test.log("Enter the user name");
-    typeText(waitForObject(names.reactAppUsernameText), user);
-    setFocus(waitForObject(names.reactAppPasswordPassword));
-    test.log("entering the pass");
-    typeText(waitForObject(names.reactAppPasswordPassword), pass);
-    test.log("click Login button");
-    clickButton(waitForObject(names.reactAppLoginButton));
     test.log("Click on add movie");
     clickLink(waitForObject(names.reactAppAddMovieA));
     test.log("Click on title");
@@ -68,8 +42,7 @@ function main(){
     var star2 = waitForObject("{title='React App' type='BrowserTab'}.DOCUMENT.HTML1.BODY1.DIV1.DIV1.DIV1.DIV6.DIV1.svg2.path1");
     var star3 = waitForObject("{title='React App' type='BrowserTab'}.DOCUMENT.HTML1.BODY1.DIV1.DIV1.DIV1.DIV6.DIV1.svg3.path1");
     var star4 = waitForObject("{title='React App' type='BrowserTab'}.DOCUMENT.HTML1.BODY1.DIV1.DIV1.DIV1.DIV6.DIV1.svg4.path1");
-    var star5 = waitForObject("{title='React App' type='BrowserTab'}.DOCUMENT.HTML1.BODY1.DIV1.DIV1.DIV1.DIV6.DIV1.svg5.path1");
-    
+    var star5 = waitForObject("{title='React App' type='BrowserTab'}.DOCUMENT.HTML1.BODY1.DIV1.DIV1.DIV1.DIV6.DIV1.svg5.path1");  
     switch (rating) {
     case "1":
         test.log("evaluate the movie with 1 star");
@@ -94,11 +67,54 @@ function main(){
     default:
         break;
     }
-    
     clickButton(waitForObject(names.reactAppSaveMovieButton));
-    test.log("Verification that the movie was add");
-    test.vp("vp1");
-    test.log("The end of test");
-    snooze(5);
+    test.log("Movie has been add");
+}
+function login(){
+    test.log("click on login");
+    clickLink(waitForObject(names.reactAppLoginA_2));
+    setFocus(waitForObject(names.reactAppUsernameText));
+    test.log("Enter the user name");
+    typeText(waitForObject(names.reactAppUsernameText), user);
+    setFocus(waitForObject(names.reactAppPasswordPassword));
+    test.log("entering the pass");
+    typeText(waitForObject(names.reactAppPasswordPassword), pass);
+    test.log("click Login button");
+    clickButton(waitForObject(names.reactAppLoginButton));
+}
+function main() {
+    test.log("Getting user and password from data table for admin")
+    var dataset = testData.dataset("login.tsv");
+    var user;
+    var pass;
+    var url = "https://autothon-nagarro-frontend-x01.azurewebsites.net/";
+    test.log("Opening the site");
+    startBrowser("https://autothon-nagarro-frontend-e00.azurewebsites.net/");
+    clickButton(waitForObject(names.reactAppButton));
+    for (var record in dataset) {
+        if (testData.field(dataset[record], "user") == "admin") {
+            user = testData.field(dataset[record], "user");
+            pass = testData.field(dataset[record], "pass");
+        }
 
+    }
+    nativeType("<Ctrl+T>");
+    snooze(4);
+    var a = browserTabs();
+    var firstTab = a[0];
+    var secondTab = a[1];
+    snooze(3);
+    activateBrowserTab(secondTab);
+    secondTab.url = url;
+    snooze(5);
+    login();
+    activateBrowserTab(firstTab);
+    snooze(3);
+    test.log(secondTab);
+    snooze(4);
+    login();
+    setFocus(waitForObject(names.reactAppSearchSearch));
+    typeText(waitForObject(names.reactAppSearchSearch), "tom and jerry");
+    test.log("Verify that movie was add");
+    test.vp("VP1");
 }
