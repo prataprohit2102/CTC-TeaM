@@ -1,0 +1,20 @@
+import { RegularExpression, Wildcard } from 'objectmaphelper.js';
+
+export var reactAppBrowserTab = {"title": "React App", "type": "BrowserTab"};
+export var reactAppLoginA = {"container": reactAppBrowserTab, "id": "navLink", "name": "Login", "simplifiedInnerText": "Login", "tagName": "A", "visible": true};
+export var reactAppPasswordText = {"container": reactAppBrowserTab, "name": "password", "tagName": "INPUT", "type": "text", "visible": true};
+export var reactAppUsernamePassword = {"container": reactAppBrowserTab, "name": "username", "tagName": "INPUT", "type": "password", "visible": true};
+export var reactAppLoginButton = {"container": reactAppBrowserTab, "name": "Cancel", "simplifiedInnerText": "Login", "tagName": "BUTTON", "type": "button", "visible": true};
+export var reactAppAddMovieA = {"container": reactAppBrowserTab, "simplifiedInnerText": "add movie", "tagName": "A", "visible": true};
+export var reactAppTitleText = {"container": reactAppBrowserTab, "name": "title", "tagName": "INPUT", "type": "text", "visible": true};
+export var reactAppCategoriesSelectMultiple = {"container": reactAppBrowserTab, "name": "categories", "tagName": "SELECT", "type": "select-multiple", "visible": true};
+export var reactAppDirectorText = {"container": reactAppBrowserTab, "name": "director", "tagName": "INPUT", "type": "text", "visible": true};
+export var reactAppDescriptionTEXTAREA = {"container": reactAppBrowserTab, "name": "description", "tagName": "TEXTAREA", "visible": true};
+export var reactAppFileText = {"container": reactAppBrowserTab, "name": "file", "tagName": "INPUT", "type": "text", "visible": true};
+export var titleReactAppTypeBrowserTabDOCUMENTHTML1BODY1DIV1DIV1DIV1DIV6DIV1Svg5Path1 = "{title='React App' type='BrowserTab'}.DOCUMENT.HTML1.BODY1.DIV1.DIV1.DIV1.DIV6.DIV1.svg5.path1";
+export var reactAppSaveMovieButton = {"container": reactAppBrowserTab, "simplifiedInnerText": "Save Movie", "tagName": "BUTTON", "type": "button", "visible": true};
+export var titleReactAppTypeBrowserTabDOCUMENTHTML1BODY1DIV1DIV1DIV1DIV6DIV1Svg4Path1 = "{title='React App' type='BrowserTab'}.DOCUMENT.HTML1.BODY1.DIV1.DIV1.DIV1.DIV6.DIV1.svg4.path1";
+export var reactAppProfileA = {"container": reactAppBrowserTab, "id": "navLink", "simplifiedInnerText": "Profile", "tagName": "A", "visible": true};
+export var reactAppSearchSearch = {"container": reactAppBrowserTab, "name": "search", "tagName": "INPUT", "type": "search", "visible": true};
+export var reactAppLooksGoodDIV = {"container": reactAppBrowserTab, "simplifiedInnerText": "Looks good!", "tagName": "DIV", "visible": true};
+export var containerTitleReactAppTypeBrowserTabSimplifiedInnerTextLooksGoodTagNameDIVVisibleTrueSvg5 = "{container={title='React App' type='BrowserTab'} simplifiedInnerText='Looks good!' tagName='DIV' visible='true'}.svg5";
